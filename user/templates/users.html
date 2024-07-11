@@ -2,6 +2,21 @@
 
 {% block content %}
 <div class="container">
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == "success" %}
+        <div class="alert alert-success mt-4">
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+          {{ message }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+    <form class="d-flex pt-4" method="GET" action="{% url 'home' %}" role="search">
+      <input class="form-control me-5" name="search" type="search" placeholder="Pesquise por um usuário." aria-label="Search">
+      <button class="btn btn-outline-success btn-lg w-25" type="submit">Pesquisar</button>
+    </form>
     <div class="jumbotron bg-dark p-5 my-4">
         <h1 class="display-4 text-white">CRUD de Usuários</h1>
         <p class="lead text-white">Uma aplicação CRUD utilizando o framework Django.</p>

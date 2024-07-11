@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form class="h-100 d-flex justify-content-center align-items-center mt-5" method="POST">
+      {% csrf_token %}
+      <div class="card px-4 py-3 w-50">
+        <div class="card-body">
+          <h5 class="card-title display-6">Atualizar Usuário</h5>
+          <div class="form-group mb-3">
+            <label for="id_name">Nome: </label>
+            {{ form.name }}
+          </div>
+          <div class="form-group mb-3">
+            <label for="id_email">E-mail: </label>
+            {{ form.email }}
+          </div>
+          <div class="form-group mb-3">
+            <label for="id_password">Senha: </label>
+            {{ form.password }}
+          </div>
+          {{ form.created_at }}
+          <div class="d-flex justify-content-around pt-4">
+            <a href="{% url 'home' %}" class="btn btn-secondary w-25">Voltar</a>
+            <input type="submit" value="Atualizar" class="btn btn-primary w-25">
+          </div>
+        </div>
+      </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container pt-5">
+  <form class="h-100 d-flex justify-content-center align-items-center" method="post">{% csrf_token %}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Você tem certeza que deseja deletar o usuário <span class="text-primary">{{ usuario.name }}</span>?</h5>
+        <div class="d-flex justify-content-around pt-4">
+          <a href="{% url 'home' %}" class="btn btn-primary">Cancelar</a>
+          <input class="btn btn-danger" type="submit" value="Deletar"> 
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
